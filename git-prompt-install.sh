@@ -31,4 +31,6 @@ echo "Please enter your Git email: "
 read git_user_email
 git config --global user.email $git_user_email
 
+# Delete install script
+rm git-prompt-install.sh
 echo "done."
