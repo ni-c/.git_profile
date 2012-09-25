@@ -1,0 +1,44 @@
+# Customized .gitconfig with nice colors (from http://cheat.errtheblog.com/s/git)
+#
+# don't forget to run git config --global user.name 'John Doe' and git config --global user.email johndoe@example.com
+
+[color]
+	ui = true
+	diff = auto
+[color "branch"]
+	current = yellow reverse
+	local = yellow
+	remote = green
+[color "diff"]
+	meta = yellow bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
+[color "status"]
+	added = yellow
+	changed = green
+	untracked = cyan
+[filter "tabspace"]
+        clean = expand -t4
+        smudge = expand -t4
+[core]
+	whitespace=fix,-indent-with-non-tab,trailing-space,space-before-tab,tabwidth=4
+	filemode=false
+[alias]
+	st = status
+	ci = commit
+	br = branch
+	co = checkout
+	df = diff
+	dc = diff --cached
+	lg = log -p
+	lol = log --graph --decorate --pretty=oneline --abbrev-commit
+	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+	ls = ls-files
+	# Show files ignored by git:
+	ign = ls-files -o -i --exclude-standard
+[merge]
+	tool = meld
+[diff]
+	tool = meld
