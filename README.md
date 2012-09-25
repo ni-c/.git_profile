@@ -17,7 +17,10 @@ Some scripts that provide a nice bash for local *git* repositories, using the ba
 
 **WARNING: Will overwrite your .bashrc, .gitconfig and .gitignore!** (The original files will be renamed to *.original)
 
-    cd ~ && wget https://raw.github.com/ni-c/.git_profile/master/git-prompt-install.sh && chmod +x git-prompt-install.sh && ./git-prompt-install.sh
+    cd ~
+    wget https://raw.github.com/ni-c/.git_profile/master/git-prompt-install.sh
+    chmod +x git-prompt-install.sh
+    ./git-prompt-install.sh
     
 ## MIT License
 
