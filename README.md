@@ -7,9 +7,9 @@ Some scripts that provide a nice bash for local *git* repositories, using the ba
 ## Features
 
 - Current branch in bash prompt (see [git-prompt.sh](https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh))
-- Branch autocompletion (local and remote)
-- Very useful *git* shortcuts (see [git-conpletion.bash](https://github.com/git/git/blob/master/contrib/completion/git-completion.bash))
-- Global .gitignore file for the (Eclipse IDE)[http://www.eclipse.org/] (yet)
+- Branch autocomplete (local and remote, see [git-completion.bash](https://github.com/git/git/blob/master/contrib/completion/git-completion.bash))
+- Very useful *git* shortcuts (Subversion like: st - status, ci - commit, co - checkout)
+- Global .gitignore file for the [Eclipse IDE](http://www.eclipse.org/) (yet)
 - Colored prompt and *git* output
 - Forced *git* user configuration (in case you forgot)
 
