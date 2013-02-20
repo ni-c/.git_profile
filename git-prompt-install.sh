@@ -22,15 +22,16 @@ wget -O ~/.gitignore https://raw.github.com/ni-c/.git_profile/master/.gitignore
 git config --global core.excludesfile ~/.gitignore
 
 # Set Git username
-echo "Please enter your GitHub username: "
+echo -e "\033[1mPlease enter your \033[4mGitHub\033[0m\033[1m username: \033[0m"
 read git_user_name
 git config --global user.name $git_user_name
 
 # Set Git email
-echo "Please enter your GitHub email: "
+echo -e "\033[1mPlease enter your \033[4mGitHub\033[0m\033[1m email address: \033[0m"
 read git_user_email
 git config --global user.email $git_user_email
 
 # Delete install script
 rm git-prompt-install.sh
-echo "Done. Scripts  will be loaded the next time you login."
+echo -e "\033[0;32mdone.\033[0m"
+echo -e "\033[1mScripts will be loaded the next time you login.\033[0m"
