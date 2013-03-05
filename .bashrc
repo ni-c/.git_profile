@@ -43,6 +43,10 @@ if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
 
+if [ -n "$DISPLAY" -a "$TERM" == "xterm" ]; then
+    export TERM=xterm-256color
+fi
+
 # Color prompt
 PS1='\[\033[0;33m\]\u\[\033[0m\]@\[\033[0;32m\]\h\[\033[0m\]:\[\033[0;34m\]\w\[\033[0;36m\]$(__git_ps1 " (%s)")\[\033[0m\]\$ '
 
