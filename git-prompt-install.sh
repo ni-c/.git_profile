@@ -32,6 +32,8 @@ read git_user_email
 git config --global user.email $git_user_email
 
 # Delete install script
-rm git-prompt-install.sh
+if [ -f ~/git-prompt-install.sh ]; then
+  rm git-prompt-install.sh
+fi
 echo -e "\033[0;32mdone.\033[0m"
 echo -e "\033[1mScripts will be loaded the next time you login.\033[0m"
