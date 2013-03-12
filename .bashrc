@@ -48,7 +48,7 @@ if [ -n "$DISPLAY" -a "$TERM" == "xterm" ]; then
 fi
 
 # Color prompt
-PS1='\[\033[0;33m\]\u\[\033[0m\]@\[\033[0;32m\]\h\[\033[0m\]:\[\033[0;34m\]\w\[\033[0;36m\]$(__git_ps1 " (%s)")\[\033[0m\]\$ '
+PS1='\[\033[0;33m\]\u\[\033[0m\]@\[\033[0;32m\]\h\[\033[0m\]:\[\033[1;34m\]\w\[\033[0;36m\]$(__git_ps1 " (%s)")\[\033[0m\]\$ '
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
@@ -92,7 +92,7 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-if [ -f /usr/local/bin/hub ] then
+if [ -f /usr/local/bin/hub ]; then
   eval "$(hub alias -s)"
 fi
 
