@@ -101,13 +101,13 @@ fi
 # out all that malarky I can just type pr "adding foobaz to the frutz".
 # (Source: http://blog.selfassembled.org/posts/github_and_workflows.html)
 function pr (){
-    if [ ! -f /usr/local/bin/hub ] then
+    if [ ! -f /usr/local/bin/hub ]; then
         echo "Hub is not installed (https://github.com/defunkt/hub). To install type:"
         echo "git clone git://github.com/defunkt/hub.git"
         echo "cd hub"
         echo "sudo rake install prefix=/usr/local"
     fi
-    if [ -f /usr/local/bin/hub ] then
+    if [ -f /usr/local/bin/hub ]; then
         git_branch=$(git branch 2>/dev/null | sed -n '/^\*/s/^\* //p')
         owner=`git config --get user.name`
         git pull-request "$@" -b $owner:development -h $owner:$git_branch
@@ -119,16 +119,13 @@ function pr (){
 # (Source: http://blog.selfassembled.org/posts/github_and_workflows.html)
 function branch (){
     args=("$@")
-    if [ -n "${args[1]}" ]
-    then
+    if [ -n "${args[1]}" ]; then
         git stash
     fi
 
     git checkout development && git pull && git checkout -b ${args[0]}
 
-    if [ -n "${args[1]}" ]
-    then
+    if [ -n "${args[1]}" ]; then
         git stash pop
     fi
 }
-
