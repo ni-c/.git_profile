@@ -92,13 +92,26 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
+if [ -f /usr/local/bin/hub ] then
+  eval "$(hub alias -s)"
+fi
+
 # This will cause a pull-request to be generated for the currently checked-out branch back into the development 
 # branch of the repo (obviously replace [github owner] with your github code owner's username), so instead of typing 
 # out all that malarky I can just type pr "adding foobaz to the frutz".
 # (Source: http://blog.selfassembled.org/posts/github_and_workflows.html)
 function pr (){
-    git_branch=$(git branch 2>/dev/null | sed -n '/^\*/s/^\* //p')
-    git pull-request "$@" -b [github owner]:development -h [github owner]:$git_branch
+    if [ ! -f /usr/local/bin/hub ] then
+        echo "Hub is not installed (https://github.com/defunkt/hub). To install type:"
+        echo "git clone git://github.com/defunkt/hub.git"
+        echo "cd hub"
+        echo "sudo rake install prefix=/usr/local"
+    fi
+    if [ -f /usr/local/bin/hub ] then
+        git_branch=$(git branch 2>/dev/null | sed -n '/^\*/s/^\* //p')
+        owner=`git config --get user.name`
+        git pull-request "$@" -b $owner:development -h $owner:$git_branch
+    fi
 }
 
 # This allows you to create a new branch off development, and if you've done any work that needs to be on that branch, 
@@ -118,3 +131,4 @@ function branch (){
         git stash pop
     fi
 }
+
