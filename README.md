@@ -18,7 +18,7 @@ Some scripts that provide a nice bash for local *git* repositories, using the ba
 **WARNING: Will overwrite your .bashrc, .gitconfig and .gitignore!** (The original files will be renamed to *.original)
 
 ````bash
-cd ~ && sh <(curl http://tinyurl.com/gitprofile -L)
+cd ~ && sh <(curl https://raw.github.com/ni-c/.git_profile/master/git-prompt-install.sh -L)
 ````
     
 If you do not have a bash-compatible shell:
