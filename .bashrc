@@ -91,3 +91,30 @@ fi
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
+
+# This will cause a pull-request to be generated for the currently checked-out branch back into the development 
+# branch of the repo (obviously replace [github owner] with your github code owner's username), so instead of typing 
+# out all that malarky I can just type pr "adding foobaz to the frutz".
+# (Source: http://blog.selfassembled.org/posts/github_and_workflows.html)
+function pr (){
+    git_branch=$(git branch 2>/dev/null | sed -n '/^\*/s/^\* //p')
+    git pull-request "$@" -b [github owner]:development -h [github owner]:$git_branch
+}
+
+# This allows you to create a new branch off development, and if you've done any work that needs to be on that branch, 
+# stash it, update from development, create your branch and then apply your stash on top of the new branch. Nifty.
+# (Source: http://blog.selfassembled.org/posts/github_and_workflows.html)
+function branch (){
+    args=("$@")
+    if [ -n "${args[1]}" ]
+    then
+        git stash
+    fi
+
+    git checkout development && git pull && git checkout -b ${args[0]}
+
+    if [ -n "${args[1]}" ]
+    then
+        git stash pop
+    fi
+}
